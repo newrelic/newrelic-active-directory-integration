@@ -1,0 +1,48 @@
+###############################################################################
+# Active Directory Logging Events                                             #
+# Source: Windows event log                                                   #
+###############################################################################
+logs:
+  # Security channel logs
+  - name: ad-security-events
+    winevtlog:
+    # winlog:    # Use 'winlog' for Windows Server versions below 2019
+      channel: Security
+      collect-eventids:
+        - 4609    # Windows is shutting down
+        - 4616    # The system time was changed
+        - 4625    # An account failed to log on
+        - 4648    # A logon was attempted using explicit credentials
+        - 4649    # A replay attach was detected
+        - 4950    # An IPsec Main Mode security association was established
+        - 4697    # A service was installed in the system
+        - 4713    # Kerberos policy was changed
+        - 4714    # Encrypted data recovery policy was changed
+        - 4719    # System audit policy was changed
+        - 4720    # A user account was created
+        - 4723    # An attempt was made to change an account's password
+        - 4724    # An attempt was made to reset an accounts password
+        - 4725    # A user account was disabled
+        - 4726    # A user account was deleted
+        - 4738    # A user account was changed
+        - 4739    # Domain Policy was changed
+        - 4740    # A user account was locked out
+        - 4781    # A computer account was created
+    attributes:
+      logtype: active_directory
+  # System channel logs
+  - name: ad-system-events
+    winevtlog:
+    # winlog:    # Use 'winlog' for Windows Server versions below 2019
+      channel: System
+      collect-eventids:
+        - 1083    # The security descriptor version number could not be determined
+        - 1202    # Security policies were propagated with warning. 0x534 : No mapping between account names and security IDs was done
+        - 1265    # The attempt to establish a replication link for the following writable directory partition failed
+        - 1311    # The Knowledge Consistency Checker (KCC) has detected problems with the following directory partition
+        - 1388    # During the past [number] days, replication errors in one or more directory partitions have caused replication to be disabled for the specified naming context on the current domain controller
+        - 1645    # Active Directory Domain Services has detected that the domain is still using the default password for the 'Administrator' account
+        - 5805    # The session setup from the computer [computer name] failed to authenticate
+        - 5807    # During the past [number] days, there have been a few replication errors in the forest. There may be network or connectivity problems in the forest
+    attributes:
+      logtype: active_directory

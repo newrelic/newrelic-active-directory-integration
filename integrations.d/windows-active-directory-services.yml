@@ -1,0 +1,28 @@
+###############################################################################
+# Active Directory Windows Services                                           #
+###############################################################################
+integrations:
+  - name: nri-winservices
+    config:
+      exporter_bind_address: 127.0.0.1
+      exporter_bind_port: 9182
+      include_matching_entities:
+        windowsService.name:
+          - "ADWS"                 # Active Directory Web Services
+          - "DFS"                  # Distributed File System
+          - "DFSR"                 # DFS Replication
+          - "DNS"                  # DNS Server
+          - "Dnscache"             # DNS Client
+          - "IsmServ"              # Intersite Messaging
+          - "kdc"                  # Kerberos Key Distribution Center
+          - "lanmanserver"         # Server
+          - "lanmanworkstation"    # Workstation
+          - "Netlogon"             # Net logon
+          - "NTDS"                 # Active Directory Domain Services
+          - "RpcSs"                # Remote Procedure Call (RPC)
+          - "SamSs"                # Security Accounts Manager
+          - "W32Time"              # Windows Time
+      scrape_interval: 30s
+    timeout: 60s
+    labels:
+      primary_app: active_directory
