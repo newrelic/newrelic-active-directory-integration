@@ -2,7 +2,7 @@
 
 # New Relic Active Directory Integration
 
-The New Relic Active Directory monitoring integration includes the configuration files required to successfully monitor the health and availability of your Active Directory environment.
+The New Relic Active Directory integration includes the configuration files required to successfully monitor the health and availability of your Active Directory environment.
 
 ## Installation
 
@@ -11,6 +11,10 @@ The New Relic Active Directory monitoring integration includes the configuration
 * These configuration files require use of the New Relic Infrastructure Agent (NRIA) and interact with the [Flex](https://docs.newrelic.com/docs/infrastructure/host-integrations/host-integrations-list/flex-integration-tool-build-your-own-integration/), [Logging](https://docs.newrelic.com/docs/logs/forward-logs/forward-your-logs-using-infrastructure-agent/#winevtlog), and [Windows Services](https://docs.newrelic.com/docs/infrastructure/host-integrations/host-integrations-list/windows-services-integration/) capabilities of NRIA.
 
 ### Process
+
+> TO-DO - add docs link here 
+
+For detailed instructions, please see the [documentation]().
 
 At a high-level, installation of this integration includes the following steps.
 
@@ -203,7 +207,7 @@ LIMIT MAX
 
 `windows-active-directory.yml`
 
-This configuration file for the [NRIA logging integration](https://docs.newrelic.com/docs/logs/forward-logs/forward-your-logs-using-infrastructure-agent/#winevtlog) collects the status of the following Event Logs:
+This configuration file for the [NRIA logging integration](https://docs.newrelic.com/docs/logs/forward-logs/forward-your-logs-using-infrastructure-agent/#winevtlog) collects the following Event Logs:
 
 | **CHANNEL** | **EVENT ID** | **DESCRIPTION** |
 |-----------|------------|------------|
