@@ -12,9 +12,7 @@ The New Relic Active Directory integration includes the configuration files requ
 
 ### Process
 
-> TO-DO - add docs link here 
-
-For detailed instructions, please see the [documentation]().
+For detailed instructions, please see the [documentation](https://docs.newrelic.com/docs/infrastructure/host-integrations/host-integrations-list/active-directory-integration/).
 
 At a high-level, installation of this integration includes the following steps.
 
@@ -256,9 +254,7 @@ LIMIT MAX
 
 ## Support
 
-New Relic hosts and moderates an online forum where you can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorers Hub. You can find this project's topic/threads here:
-
->TO-DO :: Add the url for the support thread here: discuss.newrelic.com
+New Relic hosts and moderates an online forum where you can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorers Hub. You can find this project's topic/threads [HERE](https://forum.newrelic.com/s/hubtopic/aAX8W0000015Ajz).
 
 ## Contribute
 
