@@ -1,0 +1,18 @@
+# This executes an external PowerShell script that measures multiple Active Directory health metrics.
+---
+integrations:
+  - name: nri-flex
+    interval: 300s
+    config:
+      name: activeDirectoryReplicationChecks
+      apis:
+        - event_type: activeDirectoryReplicationPartners
+          shell: powershell
+          timeout: 299000
+          commands:
+            - run: "& \"C:/Program Files/New Relic/newrelic-infra/integrations.d/windows-active-directory-replication-partners.ps1\""
+        - event_type: activeDirectoryReplicationFailures
+          shell: powershell
+          timeout: 299000
+          commands:
+            - run: "& \"C:/Program Files/New Relic/newrelic-infra/integrations.d/windows-active-directory-replication-failures.ps1\""

@@ -1,0 +1,13 @@
+# This executes an external PowerShell script that measures multiple Active Directory performance counters.
+---
+integrations:
+  - name: nri-flex
+    interval: 30s
+    config:
+      name: activeDirectoryPerformanceCounters
+      apis:
+        - event_type: activeDirectoryPerformanceCounters
+          shell: powershell
+          timeout: 29000
+          commands:
+            - run: "& \"C:/Program Files/New Relic/newrelic-infra/integrations.d/windows-active-directory-performance-counters.ps1\""
