@@ -13,7 +13,7 @@ logs:
         - 4616    # The system time was changed
         - 4625    # An account failed to log on
         - 4648    # A logon was attempted using explicit credentials
-        - 4649    # A replay attach was detected
+        - 4649    # A replay attack was detected
         - 4950    # An IPsec Main Mode security association was established
         - 4697    # A service was installed in the system
         - 4713    # Kerberos policy was changed
