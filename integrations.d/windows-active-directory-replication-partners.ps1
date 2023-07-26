@@ -1,4 +1,4 @@
-#region Top of Script
+ #region Top of Script
 
 #requires -version 4
 
@@ -8,6 +8,11 @@
 .DESCRIPTION
     This script uses cmdlets from the Active-Directory module in PowerShell
 .NOTES
+	Version:		1.1
+	Author:			Zack Mutchler
+	Creation Date:	26-July-2023
+	Purpose/Change:	Fix issue where multiple replication partners was breaking collection
+
 	Version:		1.0
 	Author:			Zack Mutchler
 	Creation Date:	12-April-2023
@@ -20,8 +25,8 @@
 
 #region Execution 
 
-# Build an empty PSObject to add our results to
-$results = New-Object -TypeName PSCustomObject
+# Build an empty array to add our results to
+$results = @()
 
 # Grab information about replication partners
 $partners = Get-ADReplicationPartnerMetadata -Target $( $env:COMPUTERNAME )
@@ -29,20 +34,28 @@ $partners = Get-ADReplicationPartnerMetadata -Target $( $env:COMPUTERNAME )
 
 if( $null -eq $partners ) {
 
-    $results | Add-Member -MemberType NoteProperty -Name 'partner' -Value ''
-    $results | Add-Member -MemberType NoteProperty -Name 'lastReplicationAttempt' -Value ''
-    $results | Add-Member -MemberType NoteProperty -Name 'lastReplicationSuccess' -Value ''
-    $results | Add-Member -MemberType NoteProperty -Name 'server' -Value ''
+    $results += New-Object -TypeName PSObject -Property @{
+
+            partner = '';
+            lastReplicationAttempt = '';
+            lastReplicationSuccess = '';
+            server = ''
+
+        }
 
 }
 else {
 
     foreach( $p in $partners ) {
 
-        $results | Add-Member -MemberType NoteProperty -Name 'partner' -Value $p.Partner.Split( ',' )[ 1 ].Trim().Replace( 'CN=', '')
-        $results | Add-Member -MemberType NoteProperty -Name 'lastReplicationAttempt' -Value $p.LastReplicationAttempt.ToString("MM/dd/yyyy h:mm:ss tt")
-        $results | Add-Member -MemberType NoteProperty -Name 'lastReplicationSuccess' -Value $p.LastReplicationSuccess.ToString("MM/dd/yyyy h:mm:ss tt")
-        $results | Add-Member -MemberType NoteProperty -Name 'server' -Value $p.Server
+        $results += New-Object -TypeName PSObject -Property @{
+
+            partner = $p.Partner.Split( ',' )[ 1 ].Trim().Replace( 'CN=', '');
+            lastReplicationAttempt = $p.LastReplicationAttempt.ToString("MM/dd/yyyy h:mm:ss tt");
+            lastReplicationSuccess = $p.LastReplicationSuccess.ToString("MM/dd/yyyy h:mm:ss tt");
+            server = $p.Server
+
+        }
 
     }
 
